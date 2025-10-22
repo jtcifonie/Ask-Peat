@@ -1,0 +1,41 @@
+/* Import Inter font */
+@import url('https://fonts.googleapis.com/css2?family=Inter:wght@400;500&display=swap');
+
+* {
+  box-sizing: border-box;
+}
+
+body {
+  margin: 0;
+  padding: 0;
+  font-family: 'Inter', sans-serif;
+  background-color: #1a1a1a;
+  color: #e8e8e8;
+}
+
+.App {
+  min-height: 100vh;
+  background-color: #1a1a1a;
+  position: relative;
+  padding-top: 65px; /* Account for fixed header */
+  padding-bottom: 120px; /* Account for fixed input section */
+}
+
+.main-content {
+  flex: 1;
+  display: flex;
+  flex-direction: column;
+  min-height: calc(100vh - 185px); /* Total height minus header and input */
+}
+
+/* Ensure proper spacing and layout */
+@media (max-width: 768px) {
+  .App {
+    padding-top: 65px;
+    padding-bottom: 100px;
+  }
+  
+  .main-content {
+    min-height: calc(100vh - 165px);
+  }
+}

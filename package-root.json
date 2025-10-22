@@ -1,0 +1,27 @@
+{
+  "name": "ask-peat-app",
+  "version": "1.0.0",
+  "description": "Ask Dr. Peat - AI assistant for Ray Peat research",
+  "main": "backend/server.js",
+  "scripts": {
+    "start": "node backend/server.js",
+    "dev": "concurrently \"npm run frontend:dev\" \"npm run backend:dev\"",
+    "frontend:dev": "cd . && npm start",
+    "frontend:build": "cd . && npm run build",
+    "backend:dev": "cd backend && npm run dev",
+    "backend:start": "cd backend && npm start",
+    "build": "npm run frontend:build",
+    "install:all": "npm install && cd backend && npm install",
+    "postinstall": "npm run build"
+  },
+  "keywords": ["ai", "chatbot", "ray-peat", "health", "nutrition"],
+  "author": "",
+  "license": "MIT",
+  "devDependencies": {
+    "concurrently": "^8.2.2"
+  },
+  "engines": {
+    "node": ">=18.0.0",
+    "npm": ">=8.0.0"
+  }
+}

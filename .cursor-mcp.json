@@ -1,0 +1,10 @@
+{
+  "mcpServers": {
+    "ask-peat-server": {
+      "command": "node",
+      "args": ["mcp-server.mjs"],
+      "cwd": "/Users/toddcifonie/ask-peat"
+    }
+  }
+}
+

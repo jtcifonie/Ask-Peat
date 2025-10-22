@@ -1,0 +1,21 @@
+services:
+  - type: web
+    name: ask-peat-backend
+    env: node
+    plan: free
+    buildCommand: npm run install:all
+    startCommand: npm start
+    envVars:
+      - key: NODE_ENV
+        value: production
+      - key: PORT
+        value: 10000
+    healthCheckPath: /api/health
+
+  - type: static
+    name: ask-peat-frontend
+    buildCommand: npm run frontend:build
+    staticPublishPath: ./build
+    envVars:
+      - key: REACT_APP_API_URL
+        value: https://ask-peat-backend.onrender.com
