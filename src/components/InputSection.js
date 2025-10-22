@@ -12,7 +12,9 @@ const InputSection = ({ onMessageSent }) => {
       setIsLoading(true);
       
       try {
-        const response = await fetch(`${process.env.REACT_APP_API_URL || 'http://localhost:5001'}/api/chat`, {
+        const apiUrl = `${process.env.REACT_APP_API_URL || 'http://localhost:5001'}/api/chat`;
+        console.log('Making request to:', apiUrl);
+        const response = await fetch(apiUrl, {
           method: 'POST',
           headers: {
             'Content-Type': 'application/json',
@@ -24,7 +26,8 @@ const InputSection = ({ onMessageSent }) => {
         });
 
         if (!response.ok) {
-          throw new Error('Failed to get response');
+          console.error('Response not ok:', response.status, response.statusText);
+          throw new Error(`Failed to get response: ${response.status} ${response.statusText}`);
         }
 
         const data = await response.json();
@@ -39,7 +42,8 @@ const InputSection = ({ onMessageSent }) => {
         setMessage('');
       } catch (error) {
         console.error('Error sending message:', error);
-        alert('Failed to send message. Please try again.');
+        console.error('Error details:', error.message);
+        alert(`Failed to send question: ${error.message}`);
       } finally {
         setIsLoading(false);
       }
