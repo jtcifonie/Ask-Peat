@@ -22,7 +22,10 @@
     "test": "react-scripts test",
     "eject": "react-scripts eject",
     "mcp-server": "node mcp-server.mjs",
-    "mcp-server:dev": "node --inspect mcp-server.mjs"
+    "mcp-server:dev": "node --inspect mcp-server.mjs",
+    "install:all": "npm install && cd backend && npm install",
+    "frontend:build": "npm run build",
+    "backend:start": "cd backend && npm start"
   },
   "eslintConfig": {
     "extends": [
@@ -44,6 +47,7 @@
   },
   "devDependencies": {
     "png-to-ico": "^3.0.1",
-    "sharp": "^0.34.4"
+    "sharp": "^0.34.4",
+    "concurrently": "^8.2.2"
   }
 }
