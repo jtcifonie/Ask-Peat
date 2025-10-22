@@ -7,7 +7,13 @@ const app = express();
 const PORT = process.env.PORT || 5001;
 
 // Middleware
-app.use(cors());
+const corsOptions = {
+  origin: process.env.NODE_ENV === 'production' 
+    ? ['https://ask-peat-frontend.onrender.com', 'http://localhost:3000']
+    : true,
+  credentials: true
+};
+app.use(cors(corsOptions));
 app.use(express.json());
 
 // In-memory storage for conversation history (simple implementation)
