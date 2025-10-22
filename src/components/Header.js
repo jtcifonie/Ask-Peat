@@ -3,7 +3,7 @@ import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
 import { faBrain, faComments, faInfoCircle } from '@fortawesome/free-solid-svg-icons';
 import './Header.css';
 
-const Header = () => {
+const Header = ({ onNavigate }) => {
   return (
     <header className="header">
       <div className="header-container">
@@ -15,14 +15,20 @@ const Header = () => {
         </div>
         
         <nav className="navigation">
-          <a href="#chat" className="nav-link">
+          <button 
+            className="nav-link"
+            onClick={() => onNavigate('home')}
+          >
             <FontAwesomeIcon icon={faComments} />
             Chat
-          </a>
-          <a href="#about" className="nav-link">
+          </button>
+          <button 
+            className="nav-link"
+            onClick={() => onNavigate('about')}
+          >
             <FontAwesomeIcon icon={faInfoCircle} />
             About
-          </a>
+          </button>
         </nav>
       </div>
     </header>

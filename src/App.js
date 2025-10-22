@@ -4,11 +4,13 @@ import Hero from './components/Hero';
 import SuggestedQuestions from './components/SuggestedQuestions';
 import Chat from './components/Chat';
 import InputSection from './components/InputSection';
+import About from './components/About';
 import './App.css';
 
 function App() {
   const [messages, setMessages] = useState([]);
   const [showChat, setShowChat] = useState(false);
+  const [currentPage, setCurrentPage] = useState('home');
 
   const handleMessageSent = (messageData) => {
     setMessages(prev => [...prev, messageData]);
@@ -45,11 +47,20 @@ function App() {
     }
   };
 
+  const handleNavigation = (page) => {
+    setCurrentPage(page);
+    if (page === 'home') {
+      setShowChat(false);
+    }
+  };
+
   return (
     <div className="App">
-      <Header />
+      <Header onNavigate={handleNavigation} />
       <main className="main-content">
-        {!showChat ? (
+        {currentPage === 'about' ? (
+          <About />
+        ) : !showChat ? (
           <>
             <Hero />
             <SuggestedQuestions onQuestionClick={handleQuestionClick} />
@@ -58,7 +69,7 @@ function App() {
           <Chat messages={messages} />
         )}
       </main>
-      <InputSection onMessageSent={handleMessageSent} />
+      {currentPage !== 'about' && <InputSection onMessageSent={handleMessageSent} />}
     </div>
   );
 }

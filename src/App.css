@@ -38,4 +38,15 @@ body {
   .main-content {
     min-height: calc(100vh - 165px);
   }
+  
+  /* Ensure proper mobile scaling */
+  body {
+    -webkit-text-size-adjust: 100%;
+    -ms-text-size-adjust: 100%;
+  }
+  
+  /* Fix mobile input zoom */
+  input, textarea, select {
+    font-size: 16px !important;
+  }
 }
